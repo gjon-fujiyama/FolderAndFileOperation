@@ -1,7 +1,7 @@
 # Folderandfileoperation version.01
 
 ■【リソースの使用方法】
-1) FolderAndFileOperetion.exe　と同階層に config.ini を配置してください。
+1) 任意の場所に FolderAndFileOperetion.exe　と同階層に config.ini を配置してください。
 2) config.ini　は、ファイル検索時に区分属性を2種類設定可能で、それぞれので区分を任意に複数設定可能です。
 
 ＜＜初期設定＞＞
