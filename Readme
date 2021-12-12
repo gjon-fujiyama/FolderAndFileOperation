@@ -1,6 +1,27 @@
-# Folderandfileoperation
+# Folderandfileoperation version.01
 
-【SearchFileListとSettingの使用方法】
+■【リソースの使用方法】
+1) FolderAndFileOperetion.exe　と同階層に config.ini を配置してください。
+2) config.ini　は、ファイル検索時に区分属性を2種類設定可能で、それぞれので区分を任意に複数設定可能です。
+
+＜＜初期設定＞＞
+ [TYPE]
+TYPE0 = ,00,True　←属性区分初期表示（defaultは空白）
+TYPE1 = 標準,01,False
+・
+TYPEX = 区分名,区分値,初期表示設定（True or False)
+
+ [DOC_TYPE]
+DOC_TYPE0 = ,00,True　←属性区分初期表示（defaultは空白）
+DOC_TYPE1 = 基本設計,01,False
+・
+DOC_TYPEX = 区分名,区分値,初期表示設定（True or False)
+
+3) FolderAndFileOperetion.exeをクリック後、起動し、SearchFileListタブもしくは、Settingタブにて登録・検索・Reload（再呼び込み）を
+　　実施すると、同階層にSqliteのDBファイルが自動的に作成されます。
+  　存在しない場合は、自動で新規のDBファイルを作成します。
+
+■【SearchFileListとSettingの使用方法】
 1) Settingタブにて取り込みたいファイル群をフォルダー単位で、属性を指定して「Add」ボタンにて一時登録します。
 2) 一覧に一時登録中のデータはSettingタブ上の一覧には、反映「未済」となっています。
    ※この時点では、SQLite未登録状態です。
@@ -12,7 +33,7 @@
    ※拡張子をアプリ起動に選択してない場合は、起動選択プロンプトを選択してください。
 7) 一覧行を選択後、「FolderOpen」を押下すると選択行のファイルのあるフォルダがExplorerが起動し、開きます。
 
-【FileCopys使用方法】
+■【FileCopys使用方法】
 1) FileCopysタブは、右側がコピー元になり、左がコピー先になります。
 2)  左Folderを指定すると右下部のテキストエリアにフォルダ配下のファイル名一覧が表示されます。
 3)  コピー元ファイルを選択（選択したファイルは背景色水色になります）中央の「＞＞」押下でコピー先のテキストエリアにファイル名が配置されます。
