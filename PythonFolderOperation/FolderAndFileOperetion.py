@@ -69,8 +69,8 @@ def renumbering():
 # + レイアウト設定
 # +-----------------------------------------------------------------------------------+
 # ------ Menu Definition ------ #
-menu_def = [['File', ['Open', ['File', 'Forder', ],'Quit'  ]],
-            ['Setting', ['Reload', ['Reload ForderPath', 'Reload FilePath', ],'Setting Reflection'  ]],
+menu_def = [['File', ['Open', ['File', 'Folder', ],'Quit'  ]],
+            ['Setting', ['Reload', ['Reload FolderPath', 'Reload FilePath', ],'Setting Reflection'  ]],
             ['Help', 'About app...'], ]
 
 # ------ Tab1 Definition ------ #
@@ -94,7 +94,7 @@ t1 = sg.Tab('SearchFileList' ,[[sg.Combo(typeValues, default_value=typeDefaultVa
                                     header_background_color='#cccccc',
                                     key='_filestable_data_',
                                     size=(800, 10),)],
-                                    [sg.Button('FileOpen',key='FileOpen'),sg.Button('ForderOpen',key='ForderOpen')]
+                                    [sg.Button('FileOpen',key='FileOpen'),sg.Button('FolderOpen',key='FolderOpen')]
                                     ])
 
 # ------ Tab2 Definition ------ #
@@ -252,7 +252,7 @@ while True:
                 sg.popup_ok('反映処理を中止しました。',title = 'Reflection stop')
 
     # 再読み込み処理
-    elif event == 'Reload' or values['menu1'] == 'Reload ForderPath':
+    elif event == 'Reload' or values['menu1'] == 'Reload FolderPath':
         #再読み込み実施
         if len(member_list) > 0:
             # 設定エンティティ全件取得
@@ -281,7 +281,7 @@ while True:
         window['-Data_Combo TYPE-'].update(values=typeValues)
         window['-Data_Combo DOC_TYPE-'].update(values=docTypeValues)
         # sg.popup_ok('再読み込み:{}件／区分設定:{}件 です。'.format(str(len(data_list)-1), str(len(values))),title = 'reloade results')
-        sg.popup_ok('再読み込み:{}件 です。'.format(str(len(data_list)-1)),title = 'reloade results')
+        sg.popup_ok('再読み込み:{}件 です。'.format(str(len(data_list))),title = 'reloade results')
 
     # 検索処理
     elif event == 'Data_Search':
@@ -321,7 +321,7 @@ while True:
             sg.popup_error('行を選択してください。',title = 'error')
 
     # フォルダオープン処理
-    elif event == 'ForderOpen' or values['menu1'] == 'Forder':
+    elif event == 'FolderOpen' or values['menu1'] == 'Folder':
         # 行選択判定
         if values['_filestable_data_']:
 
@@ -333,7 +333,7 @@ while True:
                 # フルパスよりディレクトリパスを取得
                 dir_path = fileOperation.getFolderPath(file_full_path)
                 # フォルダOPEN確認
-                mess = sg.popup_ok_cancel('フォルダ：{}を開きますか？'.format(dir_path),title = 'Confirm to open the forder')
+                mess = sg.popup_ok_cancel('フォルダ：{}を開きますか？'.format(dir_path),title = 'Confirm to open the Folder')
                 if mess == "OK":
                     print("---選択行:{}----".format(data_list[num][0]))
                     # フォルダOPEN処理
@@ -349,12 +349,12 @@ while True:
     # 指定フォルダ内のファイルを取得後、リストボックスに表示
     elif event == '-ORG FOLDER-':
         # コピー元フォルダパス取得
-        org_forder_full_path = values['-ORG FOLDER-']
+        org_Folder_full_path = values['-ORG FOLDER-']
 
         # コピー元フォルダ選択判定
-        if org_forder_full_path:
+        if org_Folder_full_path:
             # コピー元ファイル名配列を取得後、コピー元ファイル名配列（退避）に設定
-            org_file_names_bk = fileOperation.getForderInFiles(forder_full_path=org_forder_full_path)
+            org_file_names_bk = fileOperation.getFolderInFiles(Folder_full_path=org_Folder_full_path)
 
             # Windowウィジェットに対してファイル名配列（退避）を再設定
             window['-ORG FILE LIST-'].update(values=org_file_names_bk)
@@ -396,7 +396,7 @@ while True:
     # ファイルコピー処理を実施
     elif event == '-File Copys-':
         # コピー元フォルダパス取得
-        org_forder_full_path = values['-ORG FOLDER-']
+        org_Folder_full_path = values['-ORG FOLDER-']
         # コピー先フォルダパス取得
         to_folder_full_path = values['-TO FOLDER-']
 
@@ -407,17 +407,17 @@ while True:
 
                 # 確認ポップアップメッセージ構築
                 path_mess = ""
-                for forder_title in [['【コピー元】',org_forder_full_path],['【コピー先】',to_folder_full_path]]:
-                    path_mess = path_mess + '{} \n'.format(forder_title[0])
+                for Folder_title in [['【コピー元】',org_Folder_full_path],['【コピー先】',to_folder_full_path]]:
+                    path_mess = path_mess + '{} \n'.format(Folder_title[0])
                     for to_file_name in to_file_names_bk:
-                        path_mess = path_mess + '{}\{}'.format(forder_title[1], to_file_name) + ' \n'
+                        path_mess = path_mess + '{}\{}'.format(Folder_title[1], to_file_name) + ' \n'
                     path_mess = path_mess + '\n'
 
                 # ファイルコピー確認ポップアップ表示
                 mess = sg.popup_ok_cancel('以下のファイルをコピーしますがよろしいですか？\n {}'.format(path_mess),title = 'to copy file')
                 if mess == "OK":
                     # ファイルコピー実行
-                    fileOperation.copyFiles(org_forder_full_path=org_forder_full_path, to_forder_full_path=to_folder_full_path, to_file_names=to_file_names_bk)
+                    fileOperation.copyFiles(org_Folder_full_path=org_Folder_full_path, to_Folder_full_path=to_folder_full_path, to_file_names=to_file_names_bk)
                     # 完了メッセージ表示
                     sg.popup_ok('{}件のファイルをコピーが完了しました。'.format(str(len(to_file_names_bk))),title = 'file copy completion')
                 else:

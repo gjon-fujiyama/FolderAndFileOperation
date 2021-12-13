@@ -30,22 +30,22 @@ class FileOperation():
         return dir_path;
 
     # フォルダ内ファイル名取得
-    def getForderInFiles(self, forder_full_path):
+    def getFolderInFiles(self, Folder_full_path):
 
-        # results = [p for p in glob.glob(r'{}/{}'.format(forder_full_path,'**'), recursive=False) if os.path.isfile(p)]
+        # results = [p for p in glob.glob(r'{}/{}'.format(Folder_full_path,'**'), recursive=False) if os.path.isfile(p)]
         # フォルダパスよりファイル名(拡張子あり)取得
-        files = os.listdir(forder_full_path)
-        files_file = [f for f in files if os.path.isfile(os.path.join(forder_full_path, f))]
+        files = os.listdir(Folder_full_path)
+        files_file = [f for f in files if os.path.isfile(os.path.join(Folder_full_path, f))]
 
         return files_file;
 
     # フォルダ内ファイル名取得
-    def copyFiles(self, org_forder_full_path, to_forder_full_path, to_file_names):
+    def copyFiles(self, org_Folder_full_path, to_Folder_full_path, to_file_names):
 
         # コピー先ファイル名分をコピー開始
         for to_file_name in to_file_names:
-            # print('OR COPY:{} \n TO COPY:{}'.format('{}\{}'.format(org_forder_full_path, to_file_name),'{}\{}'.format(to_forder_full_path, to_file_name)))
-            shutil.copy2('{}\{}'.format(org_forder_full_path, to_file_name), '{}\{}'.format(to_forder_full_path, to_file_name))
+            # print('OR COPY:{} \n TO COPY:{}'.format('{}\{}'.format(org_Folder_full_path, to_file_name),'{}\{}'.format(to_Folder_full_path, to_file_name)))
+            shutil.copy2('{}\{}'.format(org_Folder_full_path, to_file_name), '{}\{}'.format(to_Folder_full_path, to_file_name))
 
 
 # クラス開始処理
@@ -68,7 +68,7 @@ if __name__ == '__main__':
                 print('---{}---'.format(args[2]))
                 # フォルダパス取得処理
                 dir_path = fileOperation.getFolderPath(args[2])
-                print('---forder:[{}]---'.format(dir_path))
+                print('---Folder:[{}]---'.format(dir_path))
                 # フォルダOPEN処理
                 fileOperation.folderOpen(dir_path)
             else:
