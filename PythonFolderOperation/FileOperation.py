@@ -32,10 +32,13 @@ class FileOperation():
     # フォルダ内ファイル名取得
     def getFolderInFiles(self, Folder_full_path):
 
-        # results = [p for p in glob.glob(r'{}/{}'.format(Folder_full_path,'**'), recursive=False) if os.path.isfile(p)]
-        # フォルダパスよりファイル名(拡張子あり)取得
-        files = os.listdir(Folder_full_path)
-        files_file = [f for f in files if os.path.isfile(os.path.join(Folder_full_path, f))]
+        if os.path.exists(Folder_full_path):
+            # results = [p for p in glob.glob(r'{}/{}'.format(Folder_full_path,'**'), recursive=False) if os.path.isfile(p)]
+            # フォルダパスよりファイル名(拡張子あり)取得
+            files = os.listdir(Folder_full_path)
+            files_file = [f for f in files if os.path.isfile(os.path.join(Folder_full_path, f))]
+        else:
+             files_file = ""
 
         return files_file;
 

@@ -61,8 +61,6 @@ def renumbering():
     row_no = 1
     for row in member_list:
         row[0] = row_no
-        row[1] = '拡張{}'.format(num2alpha(row_no))
-        row[5] = num2alpha(row_no)
         row_no += 1
 
 # +-----------------------------------------------------------------------------------+
@@ -78,7 +76,8 @@ t1 = sg.Tab('SearchFileList' ,[[sg.Combo(typeValues, default_value=typeDefaultVa
                                 sg.Combo(docTypeValues, default_value=docTypeDefaultValue, key='-Data_Combo DOC_TYPE-', size=(20,1)),
                                 sg.InputText(key='Data_File_Path_Name'),
                                 sg.Button('Search',key='Data_Search'),
-                                sg.Button('Reload',key='Data_Reload', pad=((180, 0),(0,0)))],
+                                sg.Button('Clear',key='Data_Search_Clear'),
+                                sg.Button('Reload',key='Data_Reload', pad=((100, 0),(0,0)))],
                                 [sg.Table(
                                     values=data_list,
                                     headings=data_header,
@@ -127,6 +126,7 @@ left_col = [[sg.Text('Org Folder'), sg.Input(size=(35,1), enable_events=True ,ke
              enable_events=True,
              select_mode=sg.LISTBOX_SELECT_MODE_MULTIPLE,
              size=(40,20),
+             horizontal_scroll =True,
              key='-ORG FILE LIST-',
              highlight_background_color = '#87ceeb',
              highlight_text_color = '#000000')]]
@@ -139,6 +139,7 @@ right_col = [[sg.Text('To Folder'), sg.Input(size=(35,1), enable_events=True ,ke
             select_mode=sg.LISTBOX_SELECT_MODE_MULTIPLE,
             size=(40,20),
             key='-TO FILE LIST-',
+            horizontal_scroll =True,
             highlight_background_color = '#87ceeb',
             highlight_text_color = '#000000')]]
 
@@ -147,10 +148,11 @@ t3 = sg.Tab('FileCopys' ,[[sg.Column(left_col),
                         sg.Column(center_col),
                         sg.VSeperator(),
                         sg.Column(right_col)],
+                        [sg.Button('Clear',key='-File Clear-', pad=((800, 0),(0,0)))],
                         [sg.Button('FileCopys',key='-File Copys-', pad=((800, 0),(0,0)))]])
 
 Layout = [[sg.Menu(menu_def, key='menu1')],
-         [sg.TabGroup([[t1 ,t2, t3]], size = (900, 450))]]
+         [sg.TabGroup([[t1 ,t2, t3]], size = (900, 470))]]
 # +-----------------------------------------------------------------------------------+
 # + ウィンドウ作成
 # +-----------------------------------------------------------------------------------+
@@ -298,6 +300,12 @@ while True:
         window['_filestable_data_'].update(values=data_list)
         sg.popup_ok('検索結果:{}件です'.format(len(data_list)),title = 'search results')
 
+    # 検索クリア処理
+    elif event == 'Data_Search_Clear':
+        window['-Data_Combo TYPE-'].update("")
+        window['-Data_Combo DOC_TYPE-'].update("")
+        window['Data_File_Path_Name'].update("")
+
     # ファイルオープン処理
     elif event == 'FileOpen' or values['menu1'] == 'File':
         # 行選択判定
@@ -426,3 +434,23 @@ while True:
                 sg.popup_error('コピー先ファイルを選択して下さい',title = 'error')
         else:
             sg.popup_error('コピー先フォルダを選択して下さい',title = 'error')
+
+    # ファイルクリア処理を実施
+    elif event == '-File Clear-':
+
+        org_file_names_bk.clear()
+        to_file_names_bk.clear()
+
+        window['-ORG FOLDER-'].update("")
+        window['-TO FOLDER-'].update("")
+        # Windowウィジェットに対してファイル名配列（退避）を再設定
+        window['-ORG FILE LIST-'].update(values=org_file_names_bk)
+        # windowsウィジェットに対して、コピー先ファイル名を退避配列で再設定
+        window['-TO FILE LIST-'].update(values=to_file_names_bk)
+
+
+
+    # このアプリについて
+    elif values['menu1'] == 'About app...':
+
+        sg.popup_ok('＜MIT License＞\n\nFolder & File Operation version 1.01 \n\nCopyright (c) 2021 G-jon FujiYama\n\nThe OS used is Windows only\n',title = 'About app...')

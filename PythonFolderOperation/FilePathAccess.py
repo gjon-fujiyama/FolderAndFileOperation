@@ -163,6 +163,7 @@ class FilePathAccess():
             """
             result = [str(row_count), filePathTran.type_section_name, filePathTran.doc_type_section_name, filePathTran.file_name, filePathTran.fll_file_path, filePathTran.id, filePathTran.type_section, filePathTran.doc_type_section, filePathTran.folder_path]
             result_list.append(result)
+            row_count +=1
 
         return result_list;
 
