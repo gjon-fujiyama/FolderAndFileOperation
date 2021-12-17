@@ -52,3 +52,5 @@ The OS used is Windows only
 ・設定タブの削除ボタン不具合改修
 ・コピータブのピー元未設定の不具合改修
 ・コピータブにクリアボタン追加
+2021/12/20
+・FolderAndFileOperetion.spec commit
