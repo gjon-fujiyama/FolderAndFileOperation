@@ -45,7 +45,7 @@ SQLAlchemy 1.4.26
 　　　DOC_TYPEX = 区分名,区分値,初期表示設定（True or False)  
   
 3)　FolderAndFileOperetion.exeをクリック後、起動し、SearchFileListタブもしくは、  
-　　Settingタブにて登録・検索・Reload（再呼び込み）を実施すると、
+　　Settingタブにて登録・検索・Reload（再呼び込み）を実施すると、  
 　　同階層にSqliteのDBファイルが自動的に作成されます。  
 　　存在しない場合は、自動で新規のDBファイルを作成します。  
   
