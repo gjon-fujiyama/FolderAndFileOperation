@@ -4,7 +4,7 @@
   
 # DEMO  
   
-![demo](https://user-images.githubusercontent.com/95132992/148064114-95d9e6be-14e1-4edd-9de3-3276a1d3226a.gif)
+![demo_](https://user-images.githubusercontent.com/95132992/148072935-829ed0d4-48ce-42b0-80a8-77cca05f2661.gif)
   
 # Features
   
