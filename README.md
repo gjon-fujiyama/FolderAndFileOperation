@@ -88,7 +88,7 @@ The OS used is Windows only
 
 # License
 
-Folderandfileoperation is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
+FolderandFileOperation is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
 
 ## ////改修履歴/////////  
 2021/12/14 Version 1.01  
