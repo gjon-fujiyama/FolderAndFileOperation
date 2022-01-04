@@ -1,4 +1,4 @@
-# FolderandFileOperation Version 1.01  
+# FolderAndFileOperation Version 1.01  
   
 設定したフォルダ内のファイルを素早く検索し、フォルダもしくはファイルを開きます。  
   
