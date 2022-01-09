@@ -14,6 +14,8 @@
   
 ②複数のファイルを選択し、一括コピーします！  
 コピー元のフォルダ内のファイルを複数選択し、コピー先のフォルダへファイルをコピーできます。  
+
+③Pythonインストール未環境でもexeファイルクリックで起動できます
   
 # Requirement
   
@@ -95,7 +97,7 @@ FolderandFileOperation is under [MIT license](https://en.wikipedia.org/wiki/MIT_
 ・検索タブにクリアボタン追加  
 ・検索タブの検索結果時のナンバリング不具合改修  
 ・設定タブの削除ボタン不具合改修  
-・コピータブのピー元未設定の不具合改修  
+・コピータブのコピー元未設定の不具合改修  
 ・コピータブにクリアボタン追加  
 2021/12/20  
 ・FolderAndFileOperetion.spec commit  
