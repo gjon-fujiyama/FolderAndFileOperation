@@ -85,7 +85,7 @@ The OS used is Windows only
   
 # Author
 
-* 作成者 G-jon fujiyama  
+* 作成者 Fujiskura
 * 所属 X 
 
 # License
