@@ -86,7 +86,7 @@ The OS used is Windows only
 # Author
 
 * 作成者 G-jon fujiyama  
-* 所属 Script Edite.  
+* 所属 X 
 
 # License
 
